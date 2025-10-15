@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  tg-agent:
+    build: .
+    container_name: telegram-agent
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./knowledge_base/chroma_data:/app/knowledge_base/chroma_data
+      - ./memory:/app/memory
+      - ./secrets:/app/secrets:ro
